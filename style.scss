@@ -1,0 +1,166 @@
+@import url(https://fonts.googleapis.com/css?family=Handlee);
+
+$yellow: #edc56d;
+$green:#054B29;
+$black:#212121;
+$brown:#6e4b00;
+$blue:#57e6ff;
+$pink:#ff78c4;
+
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+.tab{
+  display: inline-block;
+  width: 150px;
+  height: 50px; 
+  margin: -400px 40px 0px;
+  background:$blue;
+  font-family: Handlee;
+  color: white;
+  font-size: 20px;
+  text-align:center;
+  padding-top: 10px;
+}
+#tabC { 
+  background:$pink;
+}
+#box {
+  position:absolute;
+  text-align: center;
+  width: 450px;
+  height: 460px; 
+  background: $yellow;
+  box-shadow: 10px 10px 25px,
+              0px -3px 20px grey inset;
+  border-radius: 10px;
+  #head {
+    margin: 20px 0px -10px 45px;
+  }
+  #players{
+    text-align: left;
+    display: inline-block;
+    width:200px;
+    margin-bottom:5px;
+    #first, .s {
+      display: inline-block;
+      p {
+        font-family: Handlee;
+        font-size: 15px;
+        margin-top:-15px;
+        padding: 0 15px;
+      }
+    }
+    #first p{
+      border-right: 2px solid $brown;
+    }
+  }
+  .reset {
+    margin: 0px 0px 0px 65px;
+    background: transparent;
+    border: none;
+    outline:none;
+    height: 30px;
+    font-family: Handlee;
+    color:$brown;
+    font-size: 20px;
+    border: 2px dashed rgba(110, 75, 0, 0);
+    &:hover {
+      opacity: 1;
+      border: 2px dashed rgba(110, 75, 0, 0.5);
+      border-radius: 30px;
+    }
+  }
+  #screen {
+    display: inline-block;
+    width: 400px;
+    height: 370px; 
+    background: radial-gradient($green, $black);
+    text-align: center;
+    overflow: hidden;
+    .after {
+      opacity:0;
+      margin-top:-360px;
+      padding-top:35%;
+      width: 400px;
+      height: 370px;
+      color: white;
+      font-family: Handlee;
+      font-size: 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      z-index:-1;
+    }
+    h1 {
+      display: block;
+      color: white;
+      text-align:center;
+      margin-top: 80px;
+      font-family: Handlee;
+      font-size: 40px;
+      padding: 0 50px;
+    }
+    .player {
+      font-size: 30px;
+    }
+    .xo, .xo1 {
+      font-size: 50px;
+    }
+    .player, .xo, .xo1 {
+      background: transparent;
+      border: none;
+      outline:none;
+      font-family: Arial;
+      color: white;
+      margin: 0 10px;
+      opacity: 0.5;
+      border: 3px dashed rgba(255, 255, 255, 0);
+      &:hover {
+        opacity: 1;
+        border: 3px dashed rgba(255, 255, 255, 0.5);
+        border-radius: 30px;
+      }
+    }
+    .back {
+      background: transparent;
+      border: none;
+      outline:none;
+      color: white;
+      opacity: 0.5;
+      margin-top:40px;
+      font-size:30px;
+      &:after {
+        content:' Back';
+        font-family: Arial;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+    table {
+      margin-top: 10px;
+      text-align:center;
+      display: inline-block;
+      td{
+        width: 130px;
+        height: 115px;
+        color:white;
+        font-family: Handlee;
+        padding-bottom: -10px;
+        font-size: 80px;
+        opacity:0.5;
+        padding:-60px;
+      }
+      .left {
+        border-left: 2px solid rgba(255, 255, 255, 0.6);
+      }
+      .top {
+        border-top: 2px solid rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+}
