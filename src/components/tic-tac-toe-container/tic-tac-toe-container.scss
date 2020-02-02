@@ -35,17 +35,3 @@
     }
   }
 }
-
-.score {
-  display: flex;
-  flex-direction: column;
-  padding: 0 10px;
-
-  &:first-child {
-    border-right: 2px solid $brown;
-  }
-
-  &__txt {
-   padding: 3px;
-  }
-}

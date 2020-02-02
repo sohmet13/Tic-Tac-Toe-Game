@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {TicTacToeField} from "../tic-tac-toe-field/tic-tac-toe-field";
 import './tic-tac-toe-container.scss';
+import {Score} from "../score/score";
 
 export class TicTacToeContainer extends Component{
   render() {
@@ -8,18 +9,8 @@ export class TicTacToeContainer extends Component{
       <div className="ttt-box">
         <div className="ttt-box__header">
           <div className="ttt-box__results">
-            <div className="score">
-              <span className="score__txt">0</span>
-              <span className="score__txt">player 1</span>
-            </div>
-            <div className="score">
-              <span className="score__txt">0</span>
-              <span className="score__txt">computer</span>
-            </div>
-            {/* <div className="s" id="third">*/}
-            {/*  <p id="P2S">0</p>*/}
-            {/*  <p>player 2</p>*/}
-            {/* </div>*/}
+            <Score score="0" playerName={'player 1'}/>
+            <Score score="0" playerName={'computer'}/>
           </div>
           <button className="ttt-box__reset">Reset All</button>
         </div>
