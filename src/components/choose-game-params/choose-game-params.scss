@@ -1,0 +1,40 @@
+.choice-box {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  height: inherit;
+  justify-content: space-between;
+  &__header {
+    font-size: 40px;
+    margin: 0;
+  }
+  &__variants {
+    display: flex;
+    justify-content: space-around;
+  }
+  &__variant {
+    font-size: 50px;
+    background: transparent;
+    outline:none;
+    color: white;
+    opacity: 0.5;
+    border: 3px dashed rgba(255, 255, 255, 0);
+    cursor: pointer;
+    &:hover {
+      border: 3px dashed rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+    }
+  }
+  &__back {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    opacity: 0.5;
+    font-size:30px;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

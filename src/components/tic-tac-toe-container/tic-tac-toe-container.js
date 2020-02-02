@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {TicTacToeField} from "../tic-tac-toe-field/tic-tac-toe-field";
 import './tic-tac-toe-container.scss';
 import {Score} from "../score/score";
+import {ChooseGameParams} from "../choose-game-params/choose-game-params";
 
 export class TicTacToeContainer extends Component{
   render() {
@@ -14,7 +15,10 @@ export class TicTacToeContainer extends Component{
           </div>
           <button className="ttt-box__reset">Reset All</button>
         </div>
-        <TicTacToeField/>
+        {/* <TicTacToeField/>*/}
+        <div className="ttt-field">
+          <ChooseGameParams/>
+        </div>
       </div>
     )
   }
