@@ -1,0 +1,51 @@
+@import "../../styles/colors";
+
+.ttt-box {
+  width: 450px;
+  height: 460px;
+  background: $yellow;
+  box-shadow: 10px 10px 25px,
+  0px -3px 20px grey inset;
+  border-radius: 10px;
+  padding: 5px 15px;
+  box-sizing: border-box;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__results {
+    display: flex;
+  }
+
+  &__reset {
+    background: transparent;
+    outline: none;
+    color: $brown;
+    font-size: 20px;
+    font-family: inherit;
+    border: 2px dashed rgba(110, 75, 0, 0);
+
+    &:hover {
+      border: 2px dashed rgba(110, 75, 0, 0.5);
+      border-radius: 30px;
+      cursor: pointer;
+    }
+  }
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+
+  &:first-child {
+    border-right: 2px solid $brown;
+  }
+
+  &__txt {
+   padding: 3px;
+  }
+}
