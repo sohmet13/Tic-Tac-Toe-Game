@@ -1,0 +1,25 @@
+.play-field {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  &__table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 95%;
+    height: 95%;
+  }
+  &__line {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  }
+  &__cell {
+    width: 30%;
+    height: 30%;
+    color: white;
+    font-size: 80px;
+    opacity: 0.5;
+    &_b-r {
+      border-right: 2px solid rgba(255, 255, 255, 0.4);
+    }
+  }
+}

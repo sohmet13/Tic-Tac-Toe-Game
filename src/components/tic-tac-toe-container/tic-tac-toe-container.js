@@ -15,9 +15,9 @@ export class TicTacToeContainer extends Component{
           </div>
           <button className="ttt-box__reset">Reset All</button>
         </div>
-        {/* <TicTacToeField/>*/}
         <div className="ttt-field">
-          <ChooseGameParams/>
+          {/*<ChooseGameParams/>*/}
+             <TicTacToeField/>
         </div>
       </div>
     )
