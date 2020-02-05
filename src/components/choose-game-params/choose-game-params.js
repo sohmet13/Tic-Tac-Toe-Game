@@ -16,7 +16,10 @@ export class ChooseGameParams extends Component{
           <button className="choice-box__variant">O</button>
         </div>
         {/* <br/>*/}
-        <button className="choice-box__back fa fa-arrow-left">Back</button>
+        <button className="choice-box__back">
+          <i className="fa fa-arrow-left"></i>
+            &nbsp;Back
+        </button>
         {/* </div>*/}
         {/* <div id="playerOne">*/}
         {/*  <h1>Player 1 : Would you like X or O?</h1>*/}

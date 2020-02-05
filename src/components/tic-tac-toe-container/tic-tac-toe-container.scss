@@ -42,7 +42,7 @@
 .ttt-field {
   //display: inline-block;
   //width: 400px;
-  height: 80%; //calc(100% - $ttt-box-header-height - $ttt-box-header-m-b - $ttt-box-header-p);
+  height: calc(100% - #{$ttt-box-header-height} - #{$ttt-box-header-m-b} - #{$ttt-box-header-p});
   background: radial-gradient($green, $black);
   text-align: center;
   color: white;

@@ -1,161 +1,212 @@
 @import url(https://fonts.googleapis.com/css?family=Handlee);
 
+$yellow: #edc56d;
+$green: #054b29;
+$black: #212121;
+$brown: #6e4b00;
+$blue: #57e6ff;
+$pink: #ff78c4;
 
-
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.tab{
+#tabs {
+  width: 400px;
+}
+#tabP {
+  position: relative;
   display: inline-block;
+  top: 50px;
   width: 150px;
-  height: 50px; 
-  margin: -400px 40px 0px;
-  background:$blue;
-  font-family: Handlee;
+  height: 40px;
+  background: $blue;
+  font: 20px Handlee;
   color: white;
-  font-size: 20px;
-  text-align:center;
+  text-align: center;
   padding-top: 10px;
+  z-index: -1;
 }
-#tabC { 
-  background:$pink;
+#tabC {
+  @extend #tabP;
+  left: 96px;
+  background: $pink;
 }
 #box {
-  position:absolute;
-  text-align: center;
+  position: relative;
+  min-width: 450px;
   width: 450px;
-  height: 460px; 
+  min-height: 460px;
+  height: 460px;
   background: $yellow;
-  box-shadow: 10px 10px 25px,
-              0px -3px 20px grey inset;
+  box-shadow: 10px 10px 25px, 0px -3px 20px grey inset;
   border-radius: 10px;
-  #head {
-    margin: 20px 0px -10px 45px;
-  }
-  #players{
-    text-align: left;
+}
+#head {
+  display: none;
+  width: 400px;
+  margin: auto;
+  position: relative;
+  top: -5px;
+  div {
     display: inline-block;
-    width:200px;
-    margin-bottom:5px;
-    #first, .s {
-      display: inline-block;
-      p {
-        font-family: Handlee;
-        font-size: 15px;
-        margin-top:-15px;
-        padding: 0 15px;
-      }
-    }
-    #first p{
-      border-right: 2px solid $brown;
+    p {
+      font: 15px Handlee;
+      padding: 0 15px;
     }
   }
-  .reset {
-    margin: 0px 0px 0px 65px;
+  #first p {
+    border-right: 2px solid $brown;
+  }
+}
+.reset {
+  position: absolute;
+  right: 0;
+  bottom: 20%;
+  background: transparent;
+  outline: none;
+  height: 30px;
+  font: 20px Handlee;
+  color: $brown;
+  border: 2px dashed rgba(110, 75, 0, 0);
+  &:hover {
+    border: 2px dashed rgba(110, 75, 0, 0.5);
+    border-radius: 30px;
+  }
+}
+h1 {
+  color: white;
+  text-align: center;
+  margin-top: 70px;
+  font: bold 40px Handlee;
+}
+#screen {
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  bottom: 30px;
+  top: 60px;
+  background: radial-gradient($green, $black);
+  text-align: center;
+  button {
+    display: inline-block;
+    font-size: 30px;
     background: transparent;
-    border: none;
-    outline:none;
-    height: 30px;
-    font-family: Handlee;
-    color:$brown;
-    font-size: 20px;
-    border: 2px dashed rgba(110, 75, 0, 0);
+    outline: none;
+    color: white;
+    margin: 0 5px;
+    opacity: 0.5;
+    border: 3px dashed rgba(255, 255, 255, 0);
     &:hover {
       opacity: 1;
-      border: 2px dashed rgba(110, 75, 0, 0.5);
+      border: 3px dashed rgba(255, 255, 255, 0.5);
       border-radius: 30px;
     }
   }
-  #screen {
-    display: inline-block;
-    width: 400px;
-    height: 370px; 
-    background: radial-gradient($green, $black);
-    text-align: center;
-    overflow: hidden;
-    .after {
-      opacity:0;
-      margin-top:-360px;
-      padding-top:35%;
-      width: 400px;
-      height: 370px;
-      color: white;
-      font-family: Handlee;
-      font-size: 40px;
-      background-color: rgba(0, 0, 0, 0.6);
-      position: absolute;
-      z-index:-1;
+  #choice {
+    display: none;
+    h2 {
+      @extend h1;
+      margin-right: 5px;
+      margin-left: 5px;
     }
-    h1 {
-      display: block;
-      color: white;
-      text-align:center;
-      margin-top: 80px;
-      font-family: Handlee;
-      font-size: 40px;
-      padding: 0 50px;
-    }
-    .player {
-      font-size: 30px;
-    }
-    .xo, .xo1 {
+    #x,
+    #o {
+      margin: 0 60px;
       font-size: 50px;
     }
-    .player, .xo, .xo1 {
-      background: transparent;
-      border: none;
-      outline:none;
+  }
+  .back {
+    display: block;
+    margin: 30px auto 0;
+    &:after {
+      content: " Back";
       font-family: Arial;
+    }
+  }
+  table {
+    display: none;
+    margin: 10px auto;
+    text-align: center;
+    border-collapse: collapse;
+    width: 95%;
+    height: 95%;
+    td {
+      display: table-cell;
+      width: 30%;
+      height: 30%;
       color: white;
-      margin: 0 10px;
+      font: 80px Handlee;
       opacity: 0.5;
-      border: 3px dashed rgba(255, 255, 255, 0);
-      &:hover {
-        opacity: 1;
-        border: 3px dashed rgba(255, 255, 255, 0.5);
-        border-radius: 30px;
-      }
     }
-    .back {
-      background: transparent;
-      border: none;
-      outline:none;
-      color: white;
-      opacity: 0.5;
-      margin-top:40px;
-      font-size:30px;
-      &:after {
-        content:' Back';
-        font-family: Arial;
-      }
-      &:hover {
-        opacity: 1;
-      }
+    tr:nth-child(1),
+    tr:nth-child(2) {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.4);
     }
-    table {
-      margin-top: 10px;
-      text-align:center;
-      display: inline-block;
-      td{
-        width: 130px;
-        height: 115px;
-        color:white;
-        font-family: Handlee;
-        padding-bottom: -10px;
-        font-size: 80px;
-        opacity:0.5;
-        padding:-60px;
-      }
-      .left {
-        border-left: 2px solid rgba(255, 255, 255, 0.6);
-      }
-      .top {
-        border-top: 2px solid rgba(255, 255, 255, 0.6);
-      }
+    #cell1,
+    #cell2,
+    #cell4,
+    #cell5,
+    #cell7,
+    #cell8 {
+      border-right: 2px solid rgba(255, 255, 255, 0.4);
     }
+  }
+}
+.shadow {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  background-color: rgba(0, 0, 0, 0.6);
+  p {
+    text-align: center;
+    color: white;
+    font: 40px Handlee;
+    margin-top: 140px;
+  }
+}
+button {
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 35px;
+  }
+  #screen button {
+    font-size: 25px;
+  }
+  #screen #choice #x,
+  #screen #choice #o {
+    margin: 0 50px;
+    font-size: 40px;
+  }
+  #box #screen table td {
+    font-size: 65px;
+  }
+  #box {
+    min-width: 380px;
+    width: 380px;
+    min-height: 410px;
+    height: 410px;
+  }
+  #head {
+    width: 330px;
+  }
+  #tabC {
+    left: 30px;
+  }
+  #tabs {
+    width: 330px;
   }
 }
