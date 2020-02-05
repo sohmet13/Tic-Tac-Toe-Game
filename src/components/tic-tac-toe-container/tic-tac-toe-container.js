@@ -3,6 +3,7 @@ import {TicTacToeField} from "../tic-tac-toe-field/tic-tac-toe-field";
 import './tic-tac-toe-container.scss';
 import {Score} from "../score/score";
 import {ChooseGameParams} from "../choose-game-params/choose-game-params";
+import {Shadow} from "../shadow/shadow";
 
 export class TicTacToeContainer extends Component{
   render() {
@@ -17,7 +18,8 @@ export class TicTacToeContainer extends Component{
         </div>
         <div className="ttt-field">
           {/*<ChooseGameParams/>*/}
-             <TicTacToeField/>
+          {/*   <TicTacToeField/>*/}
+            <Shadow/>
         </div>
       </div>
     )

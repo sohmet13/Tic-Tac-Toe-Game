@@ -1,0 +1,11 @@
+.shadow {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__text {
+    color: white;
+    font-size: 40px;
+  }
+}
