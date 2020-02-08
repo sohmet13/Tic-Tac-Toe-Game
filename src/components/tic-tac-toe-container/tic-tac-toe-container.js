@@ -33,11 +33,11 @@ export class TicTacToeContainer extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        znak_user: null,
-        znak_comp: null,
         playersCount: null,
         player1Sign: null,
-        player2Sign: null
+        player2Sign: null,
+        player1Score: 0,
+        player2Score: 0
       }
     }
 
@@ -52,6 +52,16 @@ export class TicTacToeContainer extends Component {
       });
     };
 
+    reset = () => {
+      this.setState({
+        playersCount: null,
+        player1Sign: null,
+        player2Sign: null,
+        player1Score: 0,
+        player2Score: 0
+      })
+    };
+
     render() {
       return (
         <div className="box-container">
@@ -62,17 +72,20 @@ export class TicTacToeContainer extends Component {
           <div className="ttt-box">
             <div className={"ttt-box__header " + (this.state.player1Sign ? 'ttt-box__header_visible' : '')}>
               <div className="ttt-box__results">
-                <Score score="0" playerName='player 1'/>
-                <Score score="0" playerName={this.playersCountsParams[this.state.playersCount]?.secondScoreName}/>
+                <Score score={this.state.player1Score} playerName='player 1'/>
+                <Score score={this.state.player2Score} playerName={this.playersCountsParams[this.state.playersCount]?.secondScoreName}/>
               </div>
-              <button className="ttt-box__reset">Reset All</button>
+              <button className="ttt-box__reset" onClick={this.reset}>Reset All</button>
             </div>
             <div className="ttt-field">
               {!this.state.player1Sign && <ChooseGameParams
                 selectPlayersCount={this.selectPlayersCount}
                 playersCount={this.state.playersCount}
                 player1Sign={this.player1Sign}/>}
-              {this.state.player1Sign && <TicTacToeField/>}
+              {this.state.player1Sign && <TicTacToeField
+                playersCount={this.state.playersCount}
+                player1Sign={this.state.player1Sign}
+                player2Sign={this.state.player2Sign}/>}
               {/* <Shadow/>*/}
             </div>
           </div>
