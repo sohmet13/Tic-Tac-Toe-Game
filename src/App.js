@@ -4,9 +4,9 @@ import {TicTacToeContainer} from "./components/tic-tac-toe-container/tic-tac-toe
 
 function App() {
   return (
-      <div className="Container">
-        <TicTacToeContainer/>
-      </div>
+    <div className="Container">
+      <TicTacToeContainer/>
+    </div>
   );
 }
 

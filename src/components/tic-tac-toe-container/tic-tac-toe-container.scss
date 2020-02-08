@@ -1,8 +1,19 @@
 @import "../../styles/colors";
 @import "../../styles/variables";
 
-.ttt-box {
+.box-container {
   width: 450px;
+  position: relative;
+}
+.tabs {
+  //width: 400px;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+}
+
+.ttt-box {
   height: 460px;
   background: $yellow;
   box-shadow: 10px 10px 25px,
@@ -17,6 +28,10 @@
     align-items: flex-end;
     height: $ttt-box-header-height;
     margin-bottom: $ttt-box-header-m-b;
+    visibility: hidden;
+    &_visible {
+      visibility: visible;
+    }
   }
 
   &__results {
