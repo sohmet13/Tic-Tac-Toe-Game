@@ -52,20 +52,29 @@ export class TicTacToeField extends Component {
           ...this.state.cells,
           [num]: this.props.playersSigns[this.props.currentPlayer]
         }
-      }, this.checkPlayerVictory);
+      }, this.checkGameState);
     }
   };
 
-  checkPlayerVictory = () => {
-    this.winCombinations.forEach(comb => {
-      const winArr = comb.filter(num => this.state.cells[num] === this.props.playersSigns[this.props.currentPlayer]);
-      // const winArr = [this.state.cells[]]
-      if (winArr.length === comb.length) {
-        this.props.updateScore();
-        this.reset();
-      }
-    });
+  checkGameState = () => {
+    this.winCombinations.forEach(this.checkPlayerVictory.bind(this));
+    this.checkDraw();
     this.props.setCurrentPlayer(this.getAnotherPlayer(this.props.currentPlayer));
+  };
+
+  checkPlayerVictory = comb => {
+    const winArr = comb.filter(num => this.state.cells[num] === this.props.playersSigns[this.props.currentPlayer]);
+    if (winArr.length === comb.length) {
+      this.props.updateScore();
+      this.reset();
+    }
+  };
+
+  checkDraw = () => {
+    const values = Object.values(this.state.cells);
+    if (values.filter(c => c).length === values.length) {
+      this.reset();
+    }
   };
 
   reset = () => {
