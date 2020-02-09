@@ -7,17 +7,6 @@ import {Shadow} from "../shadow/shadow";
 import {Tab} from "../tab/Tab";
 
 export class TicTacToeContainer extends Component {
-    win_user_array = [
-      "123",
-      "456",
-      "789",
-      "147",
-      "258",
-      "369",
-      "159",
-      "357"
-    ];
-
     playersCountsParams = {
       1: {
         playerTabName: "You turn!",
@@ -30,36 +19,54 @@ export class TicTacToeContainer extends Component {
         secondScoreName: "player 2"
       }
     };
+
+    initialState = {
+      playersCount: null,
+      playersSigns: {
+        1: null,
+        2: null
+      },
+      playersScore: {
+        1: 0,
+        2: 0
+      },
+      currentPlayer: null
+    };
+
     constructor(props) {
       super(props);
-      this.state = {
-        playersCount: null,
-        player1Sign: null,
-        player2Sign: null,
-        player1Score: 0,
-        player2Score: 0
-      }
+      this.state = this.initialState;
     }
 
-    selectPlayersCount = (playersCount) => {
+    selectPlayersCount = playersCount => {
       this.setState({playersCount});
     };
 
-    player1Sign = (player1Sign) => {
+    setPlayersSigns = player1Sign => {
       this.setState({
-        player1Sign,
-        player2Sign: player1Sign === 'X' ? 'O' : 'X'
+        playersSigns: {
+          1: player1Sign,
+          2: player1Sign === 'X' ? 'O' : 'X',
+        }
+      });
+    };
+
+    setCurrentPlayer = currentPlayer => {
+      this.setState({currentPlayer});
+    };
+
+    updateScore = () => {
+      let score = this.state.playersScore[this.state.currentPlayer];
+      this.setState({
+        playersScore: {
+          ...this.state.playersScore,
+          [this.state.currentPlayer]: ++score
+        }
       });
     };
 
     reset = () => {
-      this.setState({
-        playersCount: null,
-        player1Sign: null,
-        player2Sign: null,
-        player1Score: 0,
-        player2Score: 0
-      })
+      this.setState({...this.initialState});
     };
 
     render() {
@@ -70,22 +77,24 @@ export class TicTacToeContainer extends Component {
             <Tab className="tab_p2" title={this.playersCountsParams[this.state.playersCount]?.secondTabName}/>
           </div>
           <div className="ttt-box">
-            <div className={"ttt-box__header " + (this.state.player1Sign ? 'ttt-box__header_visible' : '')}>
+            <div className={"ttt-box__header " + (this.state.playersSigns['1'] ? 'ttt-box__header_visible' : '')}>
               <div className="ttt-box__results">
-                <Score score={this.state.player1Score} playerName='player 1'/>
-                <Score score={this.state.player2Score} playerName={this.playersCountsParams[this.state.playersCount]?.secondScoreName}/>
+                <Score score={this.state.playersScore[1]} playerName='player 1'/>
+                <Score score={this.state.playersScore[2]} playerName={this.playersCountsParams[this.state.playersCount]?.secondScoreName}/>
               </div>
               <button className="ttt-box__reset" onClick={this.reset}>Reset All</button>
             </div>
             <div className="ttt-field">
-              {!this.state.player1Sign && <ChooseGameParams
+              {!this.state.playersSigns['1'] && <ChooseGameParams
                 selectPlayersCount={this.selectPlayersCount}
                 playersCount={this.state.playersCount}
-                player1Sign={this.player1Sign}/>}
-              {this.state.player1Sign && <TicTacToeField
+                player1Sign={this.setPlayersSigns}/>}
+              {this.state.playersSigns['1'] && <TicTacToeField
                 playersCount={this.state.playersCount}
-                player1Sign={this.state.player1Sign}
-                player2Sign={this.state.player2Sign}/>}
+                playersSigns={this.state.playersSigns}
+                currentPlayer={this.state.currentPlayer}
+                setCurrentPlayer={this.setCurrentPlayer}
+                updateScore={this.updateScore}/>}
               {/* <Shadow/>*/}
             </div>
           </div>
