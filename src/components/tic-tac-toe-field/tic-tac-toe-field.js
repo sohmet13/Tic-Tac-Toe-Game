@@ -27,22 +27,63 @@ export class TicTacToeField extends Component {
     },
   };
 
+  get isComputerStep() {
+    return this.props.playersCount === 1 && this.props.currentPlayer === 2
+  }
+
+  get anotherPlayer() {
+    return this.props.currentPlayer === 1 ? 2: 1
+  }
+
+  get randomCellNum() {
+    return Math.round(Math.random() * (9 - 1) + 1);
+  }
+
   constructor(props) {
     super(props);
-    this.state = this.initialState;
+    this.state = {...this.initialState};
   }
 
   componentDidMount() {
     this.selectFirstPlayer();
   }
 
-  getAnotherPlayer = currPlayer => {
-    return currPlayer === 1 ? 2: 1;
-  };
+  setComputerSignToCell() {
+    if (this.isComputerStep) {
+      const cell = this.getComputerCell();
+      this.setSignToCell(cell);
+    }
+  }
 
   selectFirstPlayer = () => {
     let randNum = Math.round(Math.random() * (2 - 1) + 1);
-    this.props.setCurrentPlayer(randNum);
+    this.props.setCurrentPlayer(randNum, this.setComputerSignToCell.bind(this));
+  };
+
+  getComputerCell = () => {
+    return this.getThirdCellNum(2) || this.getThirdCellNum(1) || this.getEmptyCellNum();
+  };
+
+  getThirdCellNum = player => {
+    for (let i = 0; i < this.winCombinations.length; i++) {
+      const winArr = this.winCombinations[i].filter(num => this.state.cells[num] === this.props.playersSigns[player]);
+      if (winArr.length === 2) {
+        const num = this.winCombinations[i].find(num => this.state.cells[num] !== this.props.playersSigns[player]);
+        if (!this.state.cells[num]) {
+          return num;
+        }
+      }
+    }
+    return null;
+  };
+
+  getEmptyCellNum = () => {
+    const randomCellNum = this.randomCellNum;
+    if (!this.state.cells[randomCellNum]) {
+      return randomCellNum;
+    } else {
+      return this.getEmptyCellNum();
+    }
   };
 
   setSignToCell = num => {
@@ -59,7 +100,7 @@ export class TicTacToeField extends Component {
   checkGameState = () => {
     this.winCombinations.forEach(this.checkPlayerVictory.bind(this));
     this.checkDraw();
-    this.props.setCurrentPlayer(this.getAnotherPlayer(this.props.currentPlayer));
+    this.props.setCurrentPlayer(this.anotherPlayer, this.setComputerSignToCell.bind(this));
   };
 
   checkPlayerVictory = comb => {

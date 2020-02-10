@@ -23,12 +23,8 @@ export class ChooseGameParams extends Component {
     //   buttonClass: 'choice-box__back_visible'
     // };
 
-    constructor(props) {
-      super(props);
-    }
-
     chooseGameParams = (count, sign) => {
-      this.props.playersCount ? this.props.player1Sign(sign) : this.props.selectPlayersCount(count)
+      this.props.playersCount ? this.props.setPlayersSigns(sign) : this.props.selectPlayersCount(count)
     };
 
     back = () => {

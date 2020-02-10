@@ -35,7 +35,7 @@ export class TicTacToeContainer extends Component {
 
     constructor(props) {
       super(props);
-      this.state = this.initialState;
+      this.state = {...this.initialState};
     }
 
     selectPlayersCount = playersCount => {
@@ -51,8 +51,8 @@ export class TicTacToeContainer extends Component {
       });
     };
 
-    setCurrentPlayer = currentPlayer => {
-      this.setState({currentPlayer});
+    setCurrentPlayer = (currentPlayer, callback) => {
+      this.setState({currentPlayer}, callback);
     };
 
     updateScore = () => {
@@ -79,22 +79,29 @@ export class TicTacToeContainer extends Component {
           <div className="ttt-box">
             <div className={"ttt-box__header " + (this.state.playersSigns['1'] ? 'ttt-box__header_visible' : '')}>
               <div className="ttt-box__results">
-                <Score score={this.state.playersScore[1]} playerName='player 1'/>
-                <Score score={this.state.playersScore[2]} playerName={this.playersCountsParams[this.state.playersCount]?.secondScoreName}/>
+                <Score
+                  score={this.state.playersScore[1]}
+                  sign={this.state.playersSigns[1]}
+                  playerName='player 1'/>
+                <Score
+                  score={this.state.playersScore[2]}
+                  sign={this.state.playersSigns[2]}
+                  playerName={this.playersCountsParams[this.state.playersCount]?.secondScoreName}/>
               </div>
               <button className="ttt-box__reset" onClick={this.reset}>Reset All</button>
             </div>
             <div className="ttt-field">
-              {!this.state.playersSigns['1'] && <ChooseGameParams
-                selectPlayersCount={this.selectPlayersCount}
-                playersCount={this.state.playersCount}
-                player1Sign={this.setPlayersSigns}/>}
-              {this.state.playersSigns['1'] && <TicTacToeField
-                playersCount={this.state.playersCount}
-                playersSigns={this.state.playersSigns}
-                currentPlayer={this.state.currentPlayer}
-                setCurrentPlayer={this.setCurrentPlayer}
-                updateScore={this.updateScore}/>}
+              {!this.state.playersSigns['1'] ?
+                <ChooseGameParams
+                  selectPlayersCount={this.selectPlayersCount}
+                  playersCount={this.state.playersCount}
+                  setPlayersSigns={this.setPlayersSigns}/> :
+                <TicTacToeField
+                  playersCount={this.state.playersCount}
+                  playersSigns={this.state.playersSigns}
+                  currentPlayer={this.state.currentPlayer}
+                  setCurrentPlayer={this.setCurrentPlayer}
+                  updateScore={this.updateScore}/>}
               {/* <Shadow/>*/}
             </div>
           </div>
